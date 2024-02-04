@@ -25,8 +25,7 @@ public interface BucketService {
 
     void putObjectIntoBucket(String bucketName, String objectName, String filePathToUpload);
 
-
-
+    void createBucket(String bucket);
 
 
 }

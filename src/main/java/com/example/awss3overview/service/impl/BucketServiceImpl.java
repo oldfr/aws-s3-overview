@@ -69,6 +69,11 @@ public class BucketServiceImpl implements BucketService {
         }
     }
 
+    @Override // need to test once
+    public void createBucket(String bucketName) {
+        s3Client.createBucket(bucketName);
+    }
+
     @Override
     public void uploadObjectToS3(PresignedUrlUploadRequest presignedUrlUploadRequest, String bucketName) throws Exception {
         if(!validateBucket(bucketName)) {
@@ -78,4 +83,6 @@ public class BucketServiceImpl implements BucketService {
         LOG.info("uploading object...");
         s3Client.upload(presignedUrlUploadRequest);
     }
+
+
 }
