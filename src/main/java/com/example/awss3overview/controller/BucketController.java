@@ -36,4 +36,10 @@ public class BucketController {
 //        bucketService.downloadObjectFromBucket(new PresignedUrlDownloadRequest(new URL("")), bucketName);
         bucketService.putObjectIntoBucket(bucketName, objName,"opt/test/v1/uploadfile.txt");
     }
+
+    @GetMapping("/createBucket")
+    public String createBucket(@RequestParam("bucketName") String bucketName) {
+        bucketService.createBucket(bucketName);
+        return "done";
+    }
 }

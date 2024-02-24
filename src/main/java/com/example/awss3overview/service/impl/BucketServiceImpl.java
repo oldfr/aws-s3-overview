@@ -69,7 +69,7 @@ public class BucketServiceImpl implements BucketService {
         }
     }
 
-    @Override // need to test once
+    @Override
     public void createBucket(String bucketName) {
         s3Client.createBucket(bucketName);
     }
