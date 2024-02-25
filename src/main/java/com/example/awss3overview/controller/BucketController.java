@@ -4,10 +4,7 @@ import com.amazonaws.services.s3.model.Bucket;
 import com.amazonaws.services.s3.model.PresignedUrlDownloadRequest;
 import com.example.awss3overview.service.BucketService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URL;
 import java.util.List;
@@ -31,13 +28,13 @@ public class BucketController {
         bucketService.getObjectFromBucket(bucketName, objName);
     }
 
-    @GetMapping("/uploadObj")
+    @PostMapping("/uploadObj")
     public void uploadObject(@RequestParam("bucketName") String bucketName, @RequestParam("objName") String objName) throws Exception {
 //        bucketService.downloadObjectFromBucket(new PresignedUrlDownloadRequest(new URL("")), bucketName);
         bucketService.putObjectIntoBucket(bucketName, objName,"opt/test/v1/uploadfile.txt");
     }
 
-    @GetMapping("/createBucket")
+    @PostMapping("/createBucket")
     public String createBucket(@RequestParam("bucketName") String bucketName) {
         bucketService.createBucket(bucketName);
         return "done";
